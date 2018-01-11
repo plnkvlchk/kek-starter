@@ -1,0 +1,38 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var BASES = {
+    PROFILE: '/profile',
+    PROJECTS: '/projects',
+    SESSION: '/session'
+};
+
+var ROUTES_PARTS = {
+    ACTIVATE: '/activate',
+    RESEND_CONFIRMATION: '/resend-confirmation',
+    PASSWORD_RESET: '/password-reset',
+    PASSWORD_UPDATE: '/password-update'
+};
+
+var ROUTES = exports.ROUTES = {
+    PROJECTS: {
+        BASE: BASES.PROJECTS,
+        GET_ALL: '',
+        ADD: ''
+    },
+    PROFILE: {
+        BASE: BASES.PROFILE,
+        ACTIVATE: ROUTES_PARTS.ACTIVATE,
+        RESEND_CONFIRMATION: ROUTES_PARTS.RESEND_CONFIRMATION,
+        PASSWORD_RESET: ROUTES_PARTS.PASSWORD_RESET,
+        PASSWORD_UPDATE: ROUTES_PARTS.PASSWORD_UPDATE
+    },
+    SESSION: {
+        BASE: BASES.SESSION,
+        LOG_IN: ''
+    }
+};
+
+var ALLOWED_ROUTES = exports.ALLOWED_ROUTES = ['' + ROUTES.PROFILE.BASE, '' + ROUTES.PROFILE.BASE + ROUTES.PROFILE.ACTIVATE, '' + ROUTES.PROFILE.BASE + ROUTES.PROFILE.RESEND_CONFIRMATION, '' + ROUTES.PROFILE.BASE + ROUTES.PROFILE.PASSWORD_RESET, '' + ROUTES.PROFILE.BASE + ROUTES.PROFILE.PASSWORD_UPDATE, '' + ROUTES.SESSION.BASE];

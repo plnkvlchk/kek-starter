@@ -1,0 +1,1 @@
+TO CREATE MIGRATION: db-migrate create YOUR_NAME --sql-file

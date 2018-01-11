@@ -1,0 +1,33 @@
+machine:
+  node:
+      version: 8.2.0
+
+  environment:
+    DATABASE_URL: postgresql://ubuntu:@127.0.0.1:5432/circle_test
+    DB_HOST: 127.0.0.1
+    DB_USER: ubuntu
+    DB_PASS:
+    DB_NAME: circle_test
+    DB_MIGR: migration
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+
+dependencies:
+  pre:
+    - sudo apt-get install python-dev
+    - sudo pip install 'awsebcli==3.7.4' --force-reinstall
+  override:
+    - yarn
+  cache_directories:
+    - ~/.cache/yarn
+
+test:
+  override:
+    - yarn run up && yarn test
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - sudo chmod u+x setup-eb.sh
+      - ./setup-eb.sh
+      - eb deploy
