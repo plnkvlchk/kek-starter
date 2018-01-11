@@ -6,7 +6,7 @@ branch-defaults:
 environment-defaults:
   Sandbox-env-1:
     branch: master
-    repository: lottery-test-task
+    repository: kek-starter
 global:
   application_name: kek-starter
   default_ec2_keyname: null
