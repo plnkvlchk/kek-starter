@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "yarn run up && yarn run build && node dist/app/server.js",
+    "start": "yarn run up -e prod && yarn run build && node dist/app/server.js",
     "build": "babel app --out-dir dist/app --ignore \"**/*.test.js\" ",
     "start-dev": "nodemon --watch ./ --exec babel-node ./app/server.js --inspect=9222",
     "test": "exit 0",
