@@ -17,7 +17,9 @@ export const TABLES = {
             NAME: 'name',
             DESCRIPTION: 'description',
             MEDIA_URLS: 'media_urls',
-            MIN_SUM_TO_DONATE: 'min_sum_to_donate'
+            MIN_SUM_TO_DONATE: 'min_sum_to_donate',
+            OWNER_ID: 'owner_id',
+            IS_PUBLISHED: 'is_published',
         }
     },
     RATED: {

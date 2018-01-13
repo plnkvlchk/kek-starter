@@ -1,28 +1,42 @@
-import { ALLOWED_ROUTES } from '../../constants/routes';
-import { verifyToken } from '../../crypt';
+import { ALLOWED_GET_ROUTES, ALLOWED_POST_ROUTES, ERROR_MESSAGES } from '../../constants';
+import { extractIdFromToken } from '../../services';
+import { getUser } from '../../services';
+import { reject } from '../index';
+import { includes } from 'lodash';
+
+function isAllowedRoute(req) {
+    return (req.method === 'GET' && includes(ALLOWED_GET_ROUTES, req.baseUrl)) ||
+        (req.method === 'POST' && includes(ALLOWED_POST_ROUTES, req.baseUrl));
+}
+
+function extractToken(req) {
+    return req.headers['x-access-token'];
+}
 
 export async function isAuthorized(req, res) {
-    if(ALLOWED_ROUTES.includes(req.baseUrl)) {
+    if(isAllowedRoute(req)) {
         return req.next();
     }
 
-    const token = req.headers['x-access-token'];
+    const token = extractToken(req);
 
     if(token) {
-        let isTokenValid;
+        let userIdFromToken;
+        let userFromToken;
 
         try {
-            isTokenValid = await verifyToken(token);
+            userIdFromToken = await extractIdFromToken(token);
+            userFromToken = await getUser(userIdFromToken);
         } catch (err) {
-            return res.status(401).send({ message: 'Bad token is passed.' });
+            return reject(res, ERROR_MESSAGES.AUTH.AUTHORIZATION_ERROR);
         }
 
-        if(isTokenValid) {
+        if(userFromToken) {
+            res.locals.user = userFromToken;
             return req.next();
         }
 
-        return res.status(401).send({ message: 'Bad token is passed.' });
+        return reject(res, ERROR_MESSAGES.AUTH.AUTHORIZATION_ERROR);
     }
-
-    return res.status(401).send({ message: 'Unauthorized user.'});
+    return reject(res, ERROR_MESSAGES.AUTH.UNAUTHORIZED_USER);
 }

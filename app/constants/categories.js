@@ -3,5 +3,4 @@ export const CATEGORIES = {
   FILMS: 'films',
   GAMES: 'games',
   MUSIC: 'music',
-
 };

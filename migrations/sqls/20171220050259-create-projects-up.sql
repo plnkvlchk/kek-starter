@@ -6,5 +6,7 @@ CREATE TABLE IF NOT EXISTS projects (
     name VARCHAR(255),
     description TEXT,
     media_urls VARCHAR(255)[],
-    min_sum_to_donate DECIMAL(8, 4) NOT NULL DEFAULT 0
+    min_sum_to_donate DECIMAL(8, 4) NOT NULL DEFAULT 0,
+    owner_id UUID NOT NULL,
+    is_published BOOLEAN NOT NULL DEFAULT false
 );
