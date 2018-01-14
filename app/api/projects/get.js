@@ -1,5 +1,6 @@
 import { success, reject } from '../';
 import { isValidUUID } from '../../helpers/validators';
+import { ERROR_MESSAGES } from '../../constants';
 import * as services from '../../services';
 
 export async function getProjectById(req, res) {
@@ -7,17 +8,17 @@ export async function getProjectById(req, res) {
     const { projectId } = req.params;
 
     if (!isValidUUID(projectId)) {
-      return reject(res, 'Invalid id format.', { projectId });
+      return reject(res, ERROR_MESSAGES.VALIDATION.INVALID_ID_FORMAT, { projectId });
     }
 
     const project = await services.getProject(projectId);
     if (!project) {
-      return reject(res, 'Project does not exist.', { projectId });
+      return reject(res, ERROR_MESSAGES.PROJECTS.PROJECT_DOES_NOT_EXIST, { projectId });
     }
 
     return success(res, {project});
   } catch (error) {
-    return reject(res, 'Get project error.', { error });
+    return reject(res, ERROR_MESSAGES.PROJECTS.GET_PROJECT_ERROR, { error });
   }
 }
 
@@ -27,7 +28,7 @@ export async function getUserProjects(req, res) {
 
     return success(res, { projects });
   } catch (error) {
-    return reject(res, 'Get user\'s projects error.', { error });
+    return reject(res, ERROR_MESSAGES.PROJECTS.GET_USER_PROJECTS_ERROR, { error });
   }
 }
 
@@ -37,6 +38,18 @@ export async function getUnpublishedProjects(req, res) {
 
     return success(res, { unpublishedProjects });
   } catch (error) {
-    return reject(res, 'Get unpublished projects error.', { error });
+    return reject(res, ERROR_MESSAGES.PROJECTS.GET_UNPUBLISHED_PROJECTS_ERROR, { error });
   }
+}
+
+export async function getMostPopularProjects(req, res) {
+    try {
+        const { count } = req.query;
+
+        const projects = await services.getPopularProjects(count || 10);
+
+        return success(res, { projects });
+    } catch (error) {
+        return reject(res, ERROR_MESSAGES.PROJECTS.GET_POPULAR_PROJECTS_ERROR);
+    }
 }

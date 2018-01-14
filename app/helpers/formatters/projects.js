@@ -19,3 +19,24 @@ export function formatProjectForInsertion(rawProject) {
 
   return project;
 }
+
+export function formatProjectValuesForUpdate(rawValues) {
+    const FIELDS_FOR_UPDATE = [
+        columns.NAME,
+        columns.NEEDED_SUM,
+        columns.CATEGORY,
+        columns.MEDIA_URLS,
+        columns.DESCRIPTION,
+        columns.MIN_SUM_TO_DONATE
+    ];
+
+    const values = {};
+
+    Object.keys(rawValues).forEach(key => {
+        if (FIELDS_FOR_UPDATE.includes(key)) {
+            values[key] = rawValues[key];
+        }
+    });
+
+    return values;
+}

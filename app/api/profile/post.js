@@ -118,6 +118,7 @@ export async function logIn(req, res) {
 
         return success(res, { token, user });
     } catch (error) {
+        console.log(error);
         return reject(res, ERROR_MESSAGES.PROFILE.LOG_IN_ERROR);
     }
 }

@@ -150,88 +150,41 @@ export const ERROR_MESSAGES = {
             code: 'EC04-0002',
             message: 'Create project error.'
         },
-
-    },
-    FACTORIES: {
-        GET_FACTORY_ERROR: {
-            code: 'EC04-0001',
-            message: 'Get factory error.'
-        },
-        GET_FACTORIES_ERROR: {
-            code: 'EC04-0002',
-            message: 'Get factories error.'
-        },
-        DELETE_FACTORY_ERROR: {
+        GET_POPULAR_PROJECTS_ERROR: {
             code: 'EC04-0003',
-            message: 'Delete factory error.'
+            message: 'Get popular projects error.'
         },
-        FACTORY_DOES_NOT_EXIST: {
+        GET_UNPUBLISHED_PROJECTS_ERROR: {
             code: 'EC04-0004',
-            message: 'Factory does not exist.'
+            message: 'Get unpublished projects error.'
         },
-        INVALID_FACTORY_DATA: {
+        GET_USER_PROJECTS_ERROR: {
             code: 'EC04-0005',
-            message: 'Invalid factory data is passed.',
+            message: 'Get user\'s projects error.'
         },
-        FACTORY_ALREADY_EXISTS: {
+        GET_PROJECT_ERROR: {
             code: 'EC04-0006',
-            message: 'Factory with this name already exists.',
+            message: 'Get project error.'
         },
-        ADD_NEW_FACTORY_ERROR: {
-            code: 'ECO4-0007',
-            message: 'Add new factory error.'
+        PROJECT_DOES_NOT_EXIST: {
+            code: 'EC04-0007',
+            message: 'Project does not exist.'
         },
-    },
-    COMPANIES: {
-        GET_COMPANY_ERROR: {
-            code: 'EC05-0001',
-            message: 'Get company error.'
+        PUBLISH_PROJECTS_ERROR: {
+            code: 'EC04-0008',
+            message: 'Publish projects error.'
         },
-        GET_COMPANIES_ERROR: {
-            code: 'EC05-0002',
-            message: 'Get companies error.'
+        PROJECTS_IDS_NOT_PASSED: {
+            code: 'EC04-0009',
+            message: 'Projects ids to publish are not passed.'
         },
-        CREATE_COMPANY_ERROR: {
-            code: 'EC05-0003',
-            messages: 'Create company error.'
+        UPDATE_PROJECT_ERROR: {
+            code: 'EC04-0010',
+            message: 'Update project error.'
         },
-        INVALID_COMPANY_DATA: {
-            code: 'EC05-0004',
-            message: 'Invalid company data is passed.',
-        },
-        COMPANY_DOES_NOT_EXIST: {
-            code: 'EC05-0005',
-            message: 'Company does not exist.'
-        },
-        DELETE_COMPANY_ERROR: {
-            code: 'EC05-0006',
-            message: 'Delete company error.'
-        },
-        USER_NOT_RELATED_TO_COMPANY: {
-            code: 'EC05-0007',
-            message: 'User is not related to this company.'
-        },
-        COMPANY_ID_VALIDATION_FAILED: {
-            code: 'EC05-0008',
-            message: 'Company id validation failed.'
-        },
-    },
-    SERIES_IDENTIFIERS:{
-        INVALID_SERIES_IDENTIFIER_DATA: {
-            code: 'EC06-0001',
-            message: 'Invalid series identifier data is passed.'
-        },
-        SERIES_IDENTIFIER_ALREADY_EXITS: {
-            code: 'EC06-0002',
-            message: 'Passed series identifier already exists.'
-        },
-        GET_SERIES_IDENTIFIER_ERROR: {
-            code: 'EC06-0003',
-            message: 'Get series identifier error.'
-        },
-        ADD_NEW_SERIES_IDENTIFIER_ERROR: {
-            code: 'EC06-0004',
-            message: 'Add new series identifier error.'
+        INVALID_UPDATE_PROJECT_DATA: {
+            code: 'EC04-0011',
+            message: 'Invalid update project data is passed.'
         },
     },
 };

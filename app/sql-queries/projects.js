@@ -49,7 +49,7 @@ export function getUpdateProjectsToPublishedQuery(projectsIds) {
   return squelPostgres.update()
       .table(table.NAME)
       .set(columns.IS_PUBLISHED, true)
-      .where(`id in (${projectsIds.map(id => `'${id}`)})`)
+      .where(`id in (${projectsIds.map(id => `'${id}'`)})`)
       .returning('*')
       .toString();
 }

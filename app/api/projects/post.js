@@ -1,6 +1,6 @@
 import * as services from '../../services';
 import { reject, success } from '../';
-import { isValidProject } from '../../helpers/validators';
+import { isValidProject, isValidUUID } from '../../helpers/validators';
 import { formatProjectForInsertion } from '../../helpers/formatters';
 import { TABLES, ERROR_MESSAGES } from '../../constants';
 
