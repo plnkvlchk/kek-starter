@@ -132,6 +132,14 @@ export const ERROR_MESSAGES = {
             code: 'EC03-0017',
             message: 'Log in error.'
         },
+        LOGIN_ALREADY_USED: {
+            code: 'EC03-0018',
+            message: 'Login is already in use.'
+        },
+        LOGIN_OR_EMAIL_SHOULD_BE_PASSED: {
+            code: 'EC03-0019',
+            message: 'Either login or email should be passed.'
+        },
     },
     PROJECTS: {
         INVALID_PROJECT_DATA: {
