@@ -1,4 +1,4 @@
-import { ALLOWED_GET_ROUTES, ALLOWED_POST_ROUTES, ERROR_MESSAGES } from '../../constants';
+import { ALLOWED_GET_ROUTES, ALLOWED_POST_ROUTES, ERROR_MESSAGES, ALLOWED_ROUTES } from '../../constants';
 import { extractIdFromToken } from '../../services';
 import { getUser } from '../../services';
 import { reject } from '../index';
@@ -10,7 +10,7 @@ function isAllowedRoute(req) {
 }
 
 function extractToken(req) {
-    return req.headers['x-access-token'];
+    return req.headers['access-token'];
 }
 
 export async function isAuthorized(req, res) {

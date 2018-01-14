@@ -7,7 +7,7 @@ import projects from './projects';
 
 const router = express.Router();
 
-// router.use('/', auth);
+router.use('/', auth);
 router.use(ROUTES.PROFILE.BASE, profile);
 router.use(ROUTES.PROJECTS.BASE, projects);
 

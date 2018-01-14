@@ -10,6 +10,7 @@ export function formatProjectForInsertion(rawProject) {
     [columns.MIN_SUM_TO_DONATE]: rawProject[columns.MIN_SUM_TO_DONATE],
     [columns.NEEDED_SUM]: rawProject[columns.NEEDED_SUM],
     [columns.OWNER_ID]: rawProject[columns.OWNER_ID],
+    [columns.COLLECTED_SUM]: 0,
   };
 
   if(rawProject[columns.MEDIA_URLS]) {

@@ -22,6 +22,7 @@ export function getUserProjects(userId) {
 }
 
 export function createProject(project) {
+    console.log(getInsertProjectQuery(project));
   return oneOrNone(getInsertProjectQuery(project));
 }
 
