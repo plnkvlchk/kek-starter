@@ -187,4 +187,22 @@ export const ERROR_MESSAGES = {
             message: 'Invalid update project data is passed.'
         },
     },
+    CONTRIBUTIONS: {
+        GET_USER_CONTRIBUTIONS_ERROR: {
+            code: 'EC05-0001',
+            message: 'Get user contributions error.'
+        },
+        GET_PROJECT_CONTRIBUTIONS_ERROR: {
+            code: 'EC05-0002',
+            message: 'Get project contributions error.'
+        },
+        GET_ALL_CONTRIBUTIONS_ERROR: {
+            code: 'EC05-0003',
+            message: 'Get all contributions error.'
+        },
+        ADD_CONTRIBUTION_ERROR: {
+            code: 'EC05-0004',
+            message: 'Add contribution error.'
+        },
+    }
 };

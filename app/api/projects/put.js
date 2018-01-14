@@ -27,7 +27,6 @@ export async function publishProjects(req, res) {
 
         return success(res, { publishedProjects });
     } catch (error) {
-        console.log(error);
         return reject(res, ERROR_MESSAGES.PROJECTS.PUBLISH_PROJECTS_ERROR);
     }
 }

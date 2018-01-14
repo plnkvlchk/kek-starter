@@ -22,7 +22,7 @@ export const TABLES = {
             IS_PUBLISHED: 'is_published',
         }
     },
-    RATED: {
+    RATES: {
         NAME: 'rates',
         COLUMNS: {
             USER_ID: 'user_id',
@@ -45,4 +45,13 @@ export const TABLES = {
             IS_BLOCKED: 'is_blocked',
         },
     },
+    CONTRIBUTIONS: {
+        NAME: 'contributions',
+        COLUMNS: {
+            USER_ID: 'user_id',
+            PROJECT_ID: 'project_id',
+            SUM: 'sum',
+            DATE: 'date',
+        }
+    }
 };
