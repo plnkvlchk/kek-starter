@@ -7,6 +7,7 @@ export function formatUserForInsertion(rawUser) {
         [columns.LOGIN]: rawUser[columns.LOGIN],
         [columns.COUNTRY]: rawUser[columns.COUNTRY],
         [columns.EMAIL]: rawUser[columns.EMAIL].toLowerCase(),
+        [columns.PASSWORD]: rawUser[columns.PASSWORD],
         [columns.PASSWORD_ATTEMPTS]: 0,
         [columns.IS_ACTIVATED]: false,
         [columns.IS_BLOCKED]: false,
