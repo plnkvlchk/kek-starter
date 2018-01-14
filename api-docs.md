@@ -187,6 +187,3 @@ METHOD: GET
 HEADERS: {
   'access-token': user-token,
 }
-
-
-

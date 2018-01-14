@@ -16,6 +16,7 @@ export function formatUserForInsertion(rawUser) {
     if (user[columns.EMAIL]) {
         user[columns.EMAIL] = user[columns.EMAIL].toLowerCase();
     }
+
     return user;
 }
 

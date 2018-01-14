@@ -49,6 +49,9 @@ export async function createProfile(req, res) {
 
         const user = await addUser(profileData);
 
+        delete user[TABLES.USERS.COLUMNS.PASSWORD];
+        delete user[TABLES.USERS.COLUMNS.KEY];
+
         // const invitation = await getJWToken({ id: user.id }, '1d');
         // const link = `${ACTIVATION_LINK}${invitation}`;
         //
@@ -108,9 +111,12 @@ export async function logIn(req, res) {
             });
         }
 
+        delete user[TABLES.USERS.COLUMNS.PASSWORD];
+        delete user[TABLES.USERS.COLUMNS.KEY];
+
         const token = await getTokenForUser(user);
 
-        return success(res, { token });
+        return success(res, { token, user });
     } catch (error) {
         return reject(res, ERROR_MESSAGES.PROFILE.LOG_IN_ERROR);
     }
