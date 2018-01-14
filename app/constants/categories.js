@@ -1,6 +1,5 @@
 export const CATEGORIES = {
-  ARTS: 'arts',
-  FILMS: 'films',
-  GAMES: 'games',
-  MUSIC: 'music',
+    ART: 'art',
+    ENGINEERING: 'engineering',
+    MEDICINE: 'medicine',
 };
