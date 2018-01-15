@@ -27,6 +27,8 @@ export async function donate(req, res) {
             [TABLES.CONTRIBUTIONS.COLUMNS.SUM]: req.body[TABLES.CONTRIBUTIONS.COLUMNS.SUM]
         });
 
+        await services.addDonationSumToProject(projectId, req.body[TABLES.CONTRIBUTIONS.COLUMNS.SUM]);
+
         return success(res, { contribution });
     } catch (error) {
         return reject(res, ERROR_MESSAGES.CONTRIBUTIONS.ADD_CONTRIBUTION_ERROR);

@@ -34,3 +34,10 @@ export function getSelectAllContributionsQuery() {
         .toString();
 }
 
+export function getDeleteProjectContributionsQuery(projectId) {
+    return squelPostgres.delete()
+        .from(table.NAME)
+        .where(`${columns.PROJECT_ID} = '${projectId}'`)
+        .toString();
+}
+

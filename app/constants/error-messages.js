@@ -194,6 +194,10 @@ export const ERROR_MESSAGES = {
             code: 'EC04-0011',
             message: 'Invalid update project data is passed.'
         },
+        DELETE_PROJECT_ERROR: {
+            code: 'EC04-0012',
+            message: 'Delete project error.'
+        },
     },
     CONTRIBUTIONS: {
         GET_USER_CONTRIBUTIONS_ERROR: {

@@ -61,4 +61,20 @@ export function getSelectAllUnpublishedProjectsQuery() {
       .toString();
 }
 
+export function getDeleteProjectQuery(projectId) {
+    return squelPostgres.delete()
+        .from(table.NAME)
+        .where(`id = '${projectId}'`)
+        .returning('*')
+        .toString();
+}
+
+export function getUpdateProjectCollectedSumQuery(projectId, sum) {
+    return squelPostgres.update()
+        .table(table.NAME)
+        .set(columns.COLLECTED_SUM, `${columns.COLLECTED_SUM} + ${sum}`)
+        .where(`id = '${projectId}'`)
+        .toString();
+}
+
 //export function delete project and return money

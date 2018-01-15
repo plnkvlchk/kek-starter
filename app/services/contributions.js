@@ -7,6 +7,7 @@ import {
     getSelectUserContributionsQuery,
     getSelectProjectContributionsQuery,
     getInsertContributionQuery,
+    getDeleteProjectContributionsQuery,
 } from '../sql-queries';
 
 export function getAllContributions() {
@@ -22,6 +23,9 @@ export function getProjectContributions(projectId) {
 }
 
 export function donateToProject(values) {
-    console.log(getInsertContributionQuery(values))
     return oneOrNone(getInsertContributionQuery(values));
+}
+
+export function deleteProjectContributions(projectId){
+    return manyOrNone(getDeleteProjectContributionsQuery(projectId));
 }

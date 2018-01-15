@@ -10,6 +10,8 @@ import {
     getSelectMostPopularProjectsQuery,
     getUpdateProjectsToPublishedQuery,
     getUpdateProjectQuery,
+    getDeleteProjectQuery,
+    getUpdateProjectCollectedSumQuery,
 } from '../sql-queries';
 
 export function getProject(id) {
@@ -33,11 +35,17 @@ export function getPopularProjects(count) {
 }
 
 export function publishProjects(projectsIds) {
-    console.log(getUpdateProjectsToPublishedQuery(projectsIds));
     return manyOrNone(getUpdateProjectsToPublishedQuery(projectsIds));
 }
 
 export function updateProject(projectId, values) {
-    console.log(getUpdateProjectQuery(projectId, values));
     return oneOrNone(getUpdateProjectQuery(projectId, values));
+}
+
+export function deleteProject(projectId) {
+    return oneOrNone(getDeleteProjectQuery(projectId));
+}
+
+export function addDonationSumToProject(projectId, sum) {
+    return oneOrNone(getUpdateProjectCollectedSumQuery(projectId, sum));
 }
