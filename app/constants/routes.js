@@ -14,11 +14,16 @@ const ROUTES_PARTS = {
     PUBLISH: '/publish',
     UNPUBLISHED: '/unpublished',
     POPULAR: '/popular',
+    CATEGORIES: '/categories',
 };
 
 const IDS = {
   PROJECTS: '/:projectId',
   FACTORIES: '/:factoryId',
+};
+
+const PARAMS = {
+    CATEGORY: '/:category',
 };
 
 export const ROUTES = {
@@ -32,6 +37,7 @@ export const ROUTES = {
         PUBLISH: ROUTES_PARTS.PUBLISH,
         GET_ALL_UNPUBLISHED: ROUTES_PARTS.UNPUBLISHED,
         DELETE: IDS.PROJECTS,
+        GET_BY_CATEGORY: ROUTES_PARTS.CATEGORIES + PARAMS.CATEGORY,
     },
     PROFILE: {
         BASE: BASES.PROFILE,
@@ -55,6 +61,7 @@ export const ALLOWED_GET_ROUTES = [
     '/profile/activate/:token',
     `${ROUTES.PROFILE.BASE}${ROUTES.PROFILE.ACTIVATE}`,
     `${ROUTES.PROJECTS.BASE}${ROUTES.PROJECTS.GET_POPULAR}`,
+    `${ROUTES.PROJECTS.BASE}${ROUTES.PROJECTS.CATEGORIES}`
 ];
 
 export const ALLOWED_POST_ROUTES = [

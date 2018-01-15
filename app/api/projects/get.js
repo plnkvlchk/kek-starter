@@ -1,6 +1,6 @@
 import { success, reject } from '../';
 import { isValidUUID } from '../../helpers/validators';
-import { ERROR_MESSAGES } from '../../constants';
+import { ERROR_MESSAGES, CATEGORIES } from '../../constants';
 import * as services from '../../services';
 
 export async function getProjectById(req, res) {
@@ -51,5 +51,21 @@ export async function getMostPopularProjects(req, res) {
         return success(res, { projects });
     } catch (error) {
         return reject(res, ERROR_MESSAGES.PROJECTS.GET_POPULAR_PROJECTS_ERROR);
+    }
+}
+
+export async function getProjectsOfCategory(req, res) {
+    try {
+        const { category } = req.params;
+
+        if (!Object.values(CATEGORIES).includes(category)) {
+            return reject(res, ERROR_MESSAGES.VALIDATION.CATEGORY_NOT_EXISTS, { category });
+        }
+
+        const projects = await services.getProjectsOfCategory(category);
+
+        return success(res, { projects });
+    } catch (error) {
+        return reject(res, ERROR_MESSAGES.PROJECTS.GET_PROJECTS_OF_CATEGORY_ERROR, { error });
     }
 }

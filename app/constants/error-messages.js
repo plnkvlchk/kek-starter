@@ -202,6 +202,10 @@ export const ERROR_MESSAGES = {
             code: 'EC04-0012',
             message: 'Delete project error.'
         },
+        GET_PROJECTS_OF_CATEGORY_ERROR: {
+            code: 'EC04-0013',
+            message: 'Get projects of category error.'
+        },
     },
     CONTRIBUTIONS: {
         GET_USER_CONTRIBUTIONS_ERROR: {

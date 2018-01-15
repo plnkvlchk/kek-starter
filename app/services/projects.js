@@ -12,6 +12,7 @@ import {
     getUpdateProjectQuery,
     getDeleteProjectQuery,
     getUpdateProjectCollectedSumQuery,
+    getSelectProjectsByCategoryQuery,
 } from '../sql-queries';
 
 export function getProject(id) {
@@ -48,4 +49,8 @@ export function deleteProject(projectId) {
 
 export function addDonationSumToProject(projectId, sum) {
     return oneOrNone(getUpdateProjectCollectedSumQuery(projectId, sum));
+}
+
+export function getProjectsOfCategory(category) {
+    return manyOrNone(getSelectProjectsByCategoryQuery(category));
 }

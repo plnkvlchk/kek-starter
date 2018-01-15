@@ -17,6 +17,7 @@ router.get(ROUTES.PROJECTS.GET_USERS_PROJECTS, get.getUserProjects);
 router.get(ROUTES.PROJECTS.GET_ALL_UNPUBLISHED, get.getUnpublishedProjects);
 router.get(ROUTES.PROJECTS.GET_POPULAR, get.getMostPopularProjects);
 router.get(ROUTES.PROJECTS.GET_BY_ID, get.getProjectById);
+router.get(ROUTES.PROJECTS.GET_BY_CATEGORY, get.getProjectsOfCategory);
 
 router.delete(ROUTES.PROJECTS.DELETE, remove.deleteProject);
 

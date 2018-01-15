@@ -78,4 +78,11 @@ export function getUpdateProjectCollectedSumQuery(projectId, sum) {
     return `UPDATE projects SET collected_sum = collected_sum + ${sum} WHERE (id = '${projectId}') RETURNING *`
 }
 
+export function getSelectProjectsByCategoryQuery(category) {
+    return squel.select()
+        .from(table.NAME)
+        .where(`${columns.CATEGORY} = '${category}'`)
+        .toString();
+}
+
 //export function delete project and return money
