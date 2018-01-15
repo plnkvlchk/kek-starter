@@ -70,11 +70,12 @@ export function getDeleteProjectQuery(projectId) {
 }
 
 export function getUpdateProjectCollectedSumQuery(projectId, sum) {
-    return squelPostgres.update()
-        .table(table.NAME)
-        .set(columns.COLLECTED_SUM, `${columns.COLLECTED_SUM} + ${sum}`)
-        .where(`id = '${projectId}'`)
-        .toString();
+    // return squelPostgres.update()
+    //     .table(table.NAME)
+    //     .set(columns.COLLECTED_SUM, `${columns.COLLECTED_SUM} + ${sum}`)
+    //     .where(`id = '${projectId}'`)
+    //     .toString();
+    return `UPDATE projects SET collected_sum = collected_sum + ${sum} WHERE (id = '${projectId}') RETURNING *`
 }
 
 //export function delete project and return money

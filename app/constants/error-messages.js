@@ -148,6 +148,10 @@ export const ERROR_MESSAGES = {
             code: 'EC03-0020',
             message: 'Add payment credentials error.'
         },
+        USER_IS_BLOCKED: {
+            code: 'EC03-0021',
+            message: 'User is blocked.'
+        },
     },
     PROJECTS: {
         INVALID_PROJECT_DATA: {

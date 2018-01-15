@@ -51,3 +51,22 @@ export function getUpdateUserByIdQuery(id, values) {
         .returning('*')
         .toString();
 }
+
+export function getBlockUserQuery(id) {
+    return squelPostgres.update()
+        .table(table.NAME)
+        .set(columns.IS_BLOCKED, true)
+        .where(`id = '${id}'`)
+        .returning('*')
+        .toString();
+}
+
+export function getAddPassworAttemptQuery(id) {
+    // return squelPostgres.update()
+    //     .table(table.NAME)
+    //     .set(columns.PASSWORD_ATTEMPTS, columns.PASSWORD_ATTEMPTS + 1)
+    //     .where(`id = '${id}'`)
+    //     .returning('*')
+    //     .toString();
+    return `UPDATE users SET password_attempts = password_attempts + 1 WHERE (id = '${id}') RETURNING *`;
+}

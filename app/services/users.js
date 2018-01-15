@@ -6,6 +6,8 @@ import {
     getSelectUserByIdQuery,
     getUpdateUserByIdQuery,
     getSelectUserByLoginQuery,
+    getBlockUserQuery,
+    getAddPassworAttemptQuery,
 } from '../sql-queries/users';
 
 export async function getUserByEmail(email) {
@@ -39,7 +41,16 @@ export function getUser(id) {
 }
 
 export function updateUser(id, data) {
-    return one(
+    return oneOrNone(
         getUpdateUserByIdQuery(id, data),
     );
+}
+
+export function blockUser(id) {
+    return oneOrNone(getBlockUserQuery(id));
+}
+
+export function addPasswordAttempt(id) {
+    console.log(getAddPassworAttemptQuery(id));
+    return oneOrNone(getAddPassworAttemptQuery(id));
 }

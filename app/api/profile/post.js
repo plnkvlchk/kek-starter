@@ -72,7 +72,7 @@ export async function createProfile(req, res) {
         if (!_.isEmpty(paymentCredentialsData)) {
             try {
                 paymentCredentialsData[TABLES.PAYMENT_CREDENTIALS.COLUMNS.USER_ID] = user.id;
-                const paymentCredentials = await services.insertPaymentCredentials(paymentCredentialsData);
+                await services.insertPaymentCredentials(paymentCredentialsData);
             } catch (err) {
                 return reject(res, ERROR_MESSAGES.PROFILE.ADD_PAYMENT_CREDENTIALS_ERROR);
             }
@@ -112,9 +112,20 @@ export async function logIn(req, res) {
             return reject(res, ERROR_MESSAGES.PROFILE.USER_NOT_EXIST, { logInData });
         }
 
+        if (user[TABLES.USERS.COLUMNS.PASSWORD_ATTEMPTS] >= 5) {
+            return reject(res, ERROR_MESSAGES.PROFILE.USER_IS_BLOCKED);
+        }
+
         const { encryptedPassword } = await encryptPassword(logInData[TABLES.USERS.COLUMNS.PASSWORD], user[TABLES.USERS.COLUMNS.KEY]);
 
         if (user[TABLES.USERS.COLUMNS.PASSWORD] !== encryptedPassword) {
+            if (user[TABLES.USERS.COLUMNS.PASSWORD_ATTEMPTS] >= 4) {
+                await services.blockUser(user.id);
+                return reject(res, ERROR_MESSAGES.PROFILE.USER_IS_BLOCKED);
+            }
+
+            await services.addPasswordAttempt(user.id);
+
             return reject(res, ERROR_MESSAGES.PROFILE.WRONG_PASSWORD, {
                 [TABLES.USERS.COLUMNS.PASSWORD]: logInData[TABLES.USERS.COLUMNS.PASSWORD],
             });
