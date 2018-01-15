@@ -44,6 +44,10 @@ export const ERROR_MESSAGES = {
             code: 'EC01-0011',
             message: 'This category does not exist.'
         },
+        INVALID_CARD_NUMBER: {
+            code: 'EC01-0012',
+            message: 'Invalid card number is passed.'
+        },
     },
     AUTH: {
         INVALID_TOKEN: {
@@ -139,6 +143,10 @@ export const ERROR_MESSAGES = {
         LOGIN_OR_EMAIL_SHOULD_BE_PASSED: {
             code: 'EC03-0019',
             message: 'Either login or email should be passed.'
+        },
+        ADD_PAYMENT_CREDENTIALS_ERROR: {
+            code: 'EC03-0020',
+            message: 'Add payment credentials error.'
         },
     },
     PROJECTS: {

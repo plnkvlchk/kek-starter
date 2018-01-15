@@ -53,5 +53,15 @@ export const TABLES = {
             SUM: 'sum',
             DATE: 'date',
         }
-    }
+    },
+    PAYMENT_CREDENTIALS: {
+        NAME: 'payment_credentials',
+        COLUMNS: {
+            USER_ID: 'user_id',
+            KEEPER: 'keeper',
+            EXPIRATION_DATE: 'expiration_date',
+            CVC: 'cvc',
+            NUMBER: 'number',
+        }
+    },
 };

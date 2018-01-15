@@ -1,12 +1,10 @@
-// import ejs from 'ejs';
-// import path from 'path';
-
 import { success, reject } from '../index';
 import {
     isValidUser,
     isValidLogInData,
+    isValidCardNumber,
 } from '../../helpers/validators';
-import { formatUserForInsertion, formatLogInData } from '../../helpers/formatters';
+import { formatUserForInsertion, formatLogInData, formatPaymentCredentials } from '../../helpers/formatters';
 import { encryptPassword } from '../../crypt';
 import {
     addUser,
@@ -17,14 +15,32 @@ import {
 import {
     TABLES,
     ERROR_MESSAGES,
+    USER_ROLES,
 } from '../../constants';
 import * as services from '../../services';
+import _ from 'lodash';
 
 export async function createProfile(req, res) {
     try {
         const profileData = formatUserForInsertion(req.body.profileData);
 
-        const profileDataValidationInfo = isValidUser(profileData);
+        let paymentCredentialsData = {};
+        let isCardNumberValid = true;
+        if (req.body.profileData[TABLES.PAYMENT_CREDENTIALS.COLUMNS.NUMBER]) {
+            paymentCredentialsData = formatPaymentCredentials({
+                ... req.body.profileData
+            });
+
+            isCardNumberValid = isValidCardNumber(paymentCredentialsData[TABLES.PAYMENT_CREDENTIALS.COLUMNS.NUMBER]);
+        }
+
+        let profileDataValidationInfo = isValidUser(profileData);
+        if (!isCardNumberValid) {
+            if (!profileDataValidationInfo) {
+                profileDataValidationInfo = {};
+            }
+            profileDataValidationInfo[TABLES.PAYMENT_CREDENTIALS.COLUMNS.NUMBER] = ERROR_MESSAGES.VALIDATION.INVALID_CARD_NUMBER;
+        }
         if (profileDataValidationInfo) {
             return reject(res, ERROR_MESSAGES.PROFILE.INVALID_PROFILE_DATA, profileDataValidationInfo);
         }
@@ -47,33 +63,26 @@ export async function createProfile(req, res) {
         profileData[TABLES.USERS.COLUMNS.PASSWORD] = encryptedPassword;
         profileData[TABLES.USERS.COLUMNS.KEY] = salt;
 
+        if (!_.isEmpty(paymentCredentialsData)) {
+            profileData[TABLES.USERS.COLUMNS.ROLE] = USER_ROLES.DONATOR;
+        }
+
         const user = await addUser(profileData);
+
+        if (!_.isEmpty(paymentCredentialsData)) {
+            try {
+                paymentCredentialsData[TABLES.PAYMENT_CREDENTIALS.COLUMNS.USER_ID] = user.id;
+                const paymentCredentials = await services.insertPaymentCredentials(paymentCredentialsData);
+            } catch (err) {
+                return reject(res, ERROR_MESSAGES.PROFILE.ADD_PAYMENT_CREDENTIALS_ERROR);
+            }
+        }
 
         delete user[TABLES.USERS.COLUMNS.PASSWORD];
         delete user[TABLES.USERS.COLUMNS.KEY];
 
-        // const invitation = await getJWToken({ id: user.id }, '1d');
-        // const link = `${ACTIVATION_LINK}${invitation}`;
-        //
-        // const header = 'Registration';
-        // const filename = path.resolve(__dirname, '../../templates/sign-up.ejs');
-        // const data = { link };
-        // const options = {};
-        //
-        // ejs.renderFile(
-        //     filename,
-        //     data,
-        //     options,
-        //     (error, template) => {
-        //         if(!error) {
-        //             sendEmail(user.email, header, template);
-        //         }
-        //     }
-        // );
-
         return success(res, { user });
     } catch(error) {
-        console.log(error);
         return reject(res, ERROR_MESSAGES.PROFILE.CREATE_PROFILE_ERROR);
     }
 }
