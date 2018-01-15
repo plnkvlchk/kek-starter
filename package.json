@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "yarn run up -e prod && yarn run build && node dist/app/server.js",
-    "build": "babel app --out-dir dist/app --ignore \"**/*.test.js\" ",
+    "build": "babel app --out-dir dist/app && babel app/templates --out-dir dist/app/templates --copy-files",
     "start-dev": "nodemon --watch ./ --exec babel-node ./app/server.js --inspect=9222",
     "test": "exit 0",
     "up": "db-migrate up",
