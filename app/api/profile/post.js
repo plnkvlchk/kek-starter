@@ -78,6 +78,12 @@ export async function createProfile(req, res) {
             }
         }
 
+        try {
+            await services.sendActivationMail(user.id, user.email);
+        } catch (err) {
+            console.log(err);
+        }
+
         delete user[TABLES.USERS.COLUMNS.PASSWORD];
         delete user[TABLES.USERS.COLUMNS.KEY];
 

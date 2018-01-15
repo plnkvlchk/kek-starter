@@ -18,6 +18,10 @@ export async function isAuthorized(req, res) {
         return req.next();
     }
 
+    if (req.baseUrl.slice(0, 17) === '/profile/activate') {
+        return req.next();
+    }
+
     const token = extractToken(req);
 
     if(token) {

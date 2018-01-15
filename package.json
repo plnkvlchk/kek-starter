@@ -19,10 +19,13 @@
     "cors": "^2.8.4",
     "db-migrate-pg": "^0.2.5",
     "dotenv": "^4.0.0",
+    "ejs": "^2.5.7",
     "express": "^4.16.2",
     "jsonwebtoken": "^8.1.0",
     "lodash": "^4.17.4",
     "node-mailer": "^0.1.1",
+    "nodemailer": "^4.4.1",
+    "path": "^0.12.7",
     "pg-promise": "^7.2.1",
     "squel": "^5.12.0"
   },

@@ -51,6 +51,8 @@ export const ROUTES = {
 };
 
 export const ALLOWED_GET_ROUTES = [
+    '/activate/:token',
+    '/profile/activate/:token',
     `${ROUTES.PROFILE.BASE}${ROUTES.PROFILE.ACTIVATE}`,
     `${ROUTES.PROJECTS.BASE}${ROUTES.PROJECTS.GET_POPULAR}`,
 ];
