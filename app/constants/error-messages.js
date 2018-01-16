@@ -224,5 +224,9 @@ export const ERROR_MESSAGES = {
             code: 'EC05-0004',
             message: 'Add contribution error.'
         },
+        INVALID_CONTRIBUTION_DATA: {
+            code: 'EC05-0005',
+            message: 'Invalid contribution data is passed.'
+        },
     }
 };

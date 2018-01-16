@@ -1,5 +1,6 @@
 export * from './projects';
 export * from './users';
+export * from './contributions';
 
 import { isString, find } from 'lodash';
 

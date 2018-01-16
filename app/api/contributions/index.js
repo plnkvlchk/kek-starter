@@ -6,6 +6,7 @@ import * as get from './get';
 
 const router = express.Router();
 
+router.post('/donate', post.androidDonate);
 router.post(ROUTES.CONTRIBUTIONS.CONTRIBUTE, post.donate);
 
 router.get(ROUTES.CONTRIBUTIONS.GET_ALL_CONTRIBUTIONS, get.getAllContributions);
