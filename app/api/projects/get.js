@@ -66,6 +66,7 @@ export async function getProjectsOfCategory(req, res) {
 
         return success(res, { projects });
     } catch (error) {
+        console.log({ error });
         return reject(res, ERROR_MESSAGES.PROJECTS.GET_PROJECTS_OF_CATEGORY_ERROR, { error });
     }
 }
