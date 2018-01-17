@@ -4,7 +4,7 @@ export const EMAIL = {
     PORT: 465,
     ADDRESS: 'info@webilesoft.com',
     PASSWORD: 'qazwsxedc123',
-    AUTHOR: 'WebileSoft team <info@webilesoft.com>',
+    AUTHOR: 'KekStarter team <info@kekstarter.com>',
 };
 
 export const API_URL = 'http://KekStarter-env.aezktzp2x8.us-east-2.elasticbeanstalk.com';
