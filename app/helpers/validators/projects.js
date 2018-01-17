@@ -90,7 +90,7 @@ export function isValidProjectForUpdate(values) {
     if (values[columns.CATEGORY]) {
         if (!isString(values[columns.CATEGORY])) {
             result[columns.CATEGORY] = ERROR_MESSAGES.VALIDATION.SHOULD_BE_STRING;
-        } else if (!Object.values(CATEGORIES).includes(values[columns.CATEGORY])) {
+        } else if (!values(CATEGORIES).includes(values[columns.CATEGORY])) {
             result[columns.NAME] = ERROR_MESSAGES.VALIDATION.CATEGORY_NOT_EXISTS;
         }
     }

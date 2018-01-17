@@ -2,6 +2,7 @@ import { success, reject } from '../';
 import { isValidUUID } from '../../helpers/validators';
 import { ERROR_MESSAGES, CATEGORIES } from '../../constants';
 import * as services from '../../services';
+import { values } from 'lodash';
 
 export async function getProjectById(req, res) {
   try {
@@ -58,7 +59,7 @@ export async function getProjectsOfCategory(req, res) {
     try {
         const { category } = req.params;
 
-        if (!Object.values(CATEGORIES).includes(category)) {
+        if (!values(CATEGORIES).includes(category)) {
             return reject(res, ERROR_MESSAGES.VALIDATION.CATEGORY_NOT_EXISTS, { category });
         }
 
