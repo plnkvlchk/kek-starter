@@ -13,15 +13,31 @@ export const initMailService = () => new Promise((res, rej) => {
             return rej(err);
         }
 
+        // // transporter = nodemailer.createTransport({
         transporter = nodemailer.createTransport({
-            host: EMAIL.HOST,
-            port: EMAIL.PORT,
-            secure: true,
+            // host: EMAIL.HOST,
+            // port: EMAIL.PORT,
+            // secure: true,
+            host: 'smtp.gmail.com',
+            port: 465,
+            // service: "Gmail",
             auth: {
-                user: EMAIL.ADDRESS,
-                pass: EMAIL.PASSWORD,
-            },
+                // user: EMAIL.ADDRESS,
+                // pass: EMAIL.PASSWORD,
+                user: "poline.hadaronok@gmail.com",
+                pass: "gfkbif13",
+            }
         });
+
+        // transporter = nodemailer.createTransport({
+        //     host: EMAIL.HOST,
+        //     port: EMAIL.PORT,
+        //     secure: true,
+        //     auth: {
+        //         user: EMAIL.ADDRESS,
+        //         pass: EMAIL.PASSWORD,
+        //     },
+        // });
         console.info('init complete');
         res();
     });

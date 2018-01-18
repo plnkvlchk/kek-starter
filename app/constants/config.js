@@ -7,7 +7,7 @@ export const EMAIL = {
     AUTHOR: 'KekStarter team <info@kekstarter.com>',
 };
 
-export const API_URL = 'http://KekStarter-env.aezktzp2x8.us-east-2.elasticbeanstalk.com';
+export const API_URL = 'http://KekStarterBackend-env.wbc2ckfdwu.us-east-2.elasticbeanstalk.com';
 // export const API_URL = 'http://localhost:3010';
 export const ACTIVATION_LINK = process.env.NODE_ENV === 'production' ? '': `${API_URL}/profile/activate/`;
 export const RESET_PASSWORD_LINK = process.env.NODE_ENV === 'production' ? '': `${API_URL}/password-reset/`;
