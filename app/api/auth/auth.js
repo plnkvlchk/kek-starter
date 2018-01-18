@@ -14,19 +14,26 @@ function extractToken(req) {
 }
 
 export async function isAuthorized(req, res) {
+    console.log(req.baseUrl);
+
     if(isAllowedRoute(req)) {
+        console.log('isAllowed')
         return req.next();
     }
 
     if (req.baseUrl.slice(0, 17) === '/profile/activate') {
+        console.log('activate')
         return req.next();
     }
 
     if (req.baseUrl.slice(0, 20) === '/projects/categories') {
+        console.log('categories')
         return req.next();
     }
 
     const token = extractToken(req);
+
+    console.log({ token });
 
     if(token) {
         let userIdFromToken;
