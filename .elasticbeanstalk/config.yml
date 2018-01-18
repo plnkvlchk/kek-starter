@@ -1,14 +1,14 @@
 branch-defaults:
   default:
-    environment: KekStarter-env
+    environment: KekStarterBackend-env
   master:
-    environment: KekStarter-env
+    environment: KekStarterBackend-env
 environment-defaults:
-  Sandbox-env-1:
+  KekStarterBackend-env:
     branch: master
     repository: kek-starter
 global:
-  application_name: kek-starter
+  application_name: kek-starter-backend
   default_ec2_keyname: null
   default_platform: arn:aws:elasticbeanstalk:us-east-2::platform/Node.js running on
     64bit Amazon Linux 2017.03 v4.3.0

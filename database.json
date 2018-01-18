@@ -11,7 +11,7 @@
     "driver": "pg",
     "user": "postgres",
     "password": "postgres",
-    "host": "KekStarter-env.aezktzp2x8.us-east-2.elasticbeanstalk.com",
+    "host": "aaw6lrxvrahvgb.cm0wtdpcodgf.us-east-2.rds.amazonaws.com",
     "port": 5432,
     "database": "ebdb"
   }
